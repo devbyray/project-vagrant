@@ -1,0 +1,58 @@
+/* Custom styles */
+
+/* Variable */
+$white : #fff;
+
+body {
+	padding-top: 72px;
+}
+
+.jumbotron {
+	text-align: center;
+}
+
+.input-group,
+.form-control {
+	margin-bottom: 16px;
+}
+
+.input-form {
+	label {
+		width: 100%;
+		display: block;
+		position: relative;
+		float: left;
+	}
+}
+
+#profile-page {
+	.profile-pic {
+		position: relative;
+		float: right;
+		margin: 0 0 10px 10px;
+	}
+}
+#signin_page {
+	.center-block {
+		max-width: 33.33%;
+	}
+}
+.table {
+	.profile-pic {
+		width: 25px; height: 25px;
+		overflow: hidden;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+}
+
+footer {
+	div {
+		padding: 5px;
+	}
+	* {
+		color: $white;
+	}
+}

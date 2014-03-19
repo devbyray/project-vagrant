@@ -1,0 +1,44 @@
+<div class="row">
+
+	<div class="col-md-8">
+		<article>
+			<form action="/user/create" method="POST" class="form-signin" id="sign-up-form">
+				<h2 class="form-sigin-heading">Create an account</h2>
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-danger">
+				<% Object.keys(flash.err).forEach(function(error) { %>
+					    <li><%- JSON.stringify(flash.err[error]) %></li>
+				<% }) %>
+					</ul>
+				<% } %>
+				<div class="input-form">
+					<input type="text" class="form-control" placeholder="Your name" name="name">
+				</div>
+				<div class="input-form">
+					<input type="text" class="form-control" placeholder="Your title" name="title">
+				</div>
+				
+				<div class="input-form">
+					<input type="email" class="form-control" placeholder="Your e-mail address" name="email">
+				</div>
+				<div class="input-form">
+					<input type="password" class="form-control" placeholder="Your password" name="password" id="password">
+				</div>
+				<div class="input-form">
+					<input type="password" class="form-control" placeholder="Password confirmation" name="confirmation">
+				</div>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Account">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+
+	<div class="col-md-4">
+		<aside>
+			<h2>Sidebar</h2>
+			<p>New user</p>
+		</aside>
+	</div>
+
+</div>
