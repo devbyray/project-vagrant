@@ -6,4 +6,5 @@ add-apt-repository -y ppa:chris-lea/node.js
 apt-get update
 apt-get install -y nodejs
 npm install -g sails
-sudo npm install -g node-gyp
+sudo apt-get install ruby
+sudo apt-get install rubygems
