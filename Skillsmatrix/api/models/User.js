@@ -11,66 +11,66 @@ module.exports = {
 	schema: true,
 
 	attributes: {
-		
-	name: {
-		type: 'string',
-		required: true,
-	},
 
-	familyname: {
-		type: 'string',
-	},
+		name: {
+			type: 'string',
+			required: true,
+		},
 
-	title: {
-		type: 'string',
-	},
+		familyname: {
+			type: 'string',
+		},
 
-	email: {
-		type: 'string',
-		required: true,
-		email: true,
-		unique: true
-	},
+		title: {
+			type: 'string',
+		},
 
-	birthday: {
-		type: 'string',
-	},
+		email: {
+			type: 'string',
+			required: true,
+			email: true,
+			unique: true
+		},
 
-	phone: {
-		type: 'string',
-	},
+		birthday: {
+			type: 'string',
+		},
 
-	address: {
-		type: 'string',
-	},
+		phone: {
+			type: 'string',
+		},
 
-	postal: {
-		type: 'string',
-	},
+		address: {
+			type: 'string',
+		},
 
-	city: {
-		type: 'string',
-	},
+		postal: {
+			type: 'string',
+		},
 
-	country: {
-		type: 'string',
-	},
+		city: {
+			type: 'string',
+		},
 
-	encryptedPassword: {
-		type: 'string',
-	},
+		country: {
+			type: 'string',
+		},
 
-	profileUrl: {
-		type: 'string',
-	},
-	// toJSON: function() {
-	// 	var obj = this.toObject();
-	// 	delete obj.password;
-	// 	delete obj.confirmation;
-	// 	delete obj.encryptedPassword;
-	// 	delete obj._csrf;
-	// 	return obj;
-	// }
+		encryptedPassword: {
+			type: 'string',
+		},
+
+		profileUrl: {
+			type: 'string',
+		},
+		toJSON: function() {
+			var obj = this.toObject();
+			delete obj.password;
+			delete obj.confirmation;
+			delete obj.encryptedPassword;
+			delete obj._csrf;
+			return obj;
+		}
 	},
 
 	beforeCreate: function (values, next) {
@@ -78,15 +78,14 @@ module.exports = {
 		// This checks to makes sure the password an password confirmation match before creating record
 		if(!values.password || values.password != values.confirmation) {
 			return next({err: ["Password doesn't match password confirmation."]});
-		} else {
-			next();
 		}
 
-		// require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
-		// 	if(err) return next(err);
-		// 	values.encryptedPassword = encryptedPassword;
-		// 	next();
-		// });
+		require('bcrypt').hash(values.password, 10, function passwordEncrypted(err, encryptedPassword) {
+			if(err) return next(err);
+			values.encryptedPassword = encryptedPassword;
+			// values.online= true;
+			next();
+		});
 	}
 
 };
