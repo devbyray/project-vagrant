@@ -40,6 +40,10 @@ module.exports = {
 	        return res.redirect('/user/new');
 	      }
 
+        // Log user in
+        req.session.authenticated = true;
+        req.session.User = user;
+
   		// After succesfully creating the user
   		// Redirect to the show action
   		// res.json(user);
