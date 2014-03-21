@@ -23,9 +23,17 @@ module.exports = {
 
   create: function(req, res, next) {
 
+    var userObj = {
+      name: req.param('name'),
+      title: req.param('title'),
+      email: req.param('email'),
+      password: req.param('password'),
+      confirmation: req.param('confirmation'),
+    }
+
   	// Create a user with the params sent from
   	// The sign-up form --> new.ejs
-  	User.create(req.params.all(), function userCreated (err, user) {
+  	User.create(userObj, function userCreated (err, user) {
 
   		// If there's an error
   		// if(err) return next(err);
@@ -96,7 +104,39 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-  	User.update(req.param('id'), req.params.all(), function userUpdated(err) {
+
+    if(req.session.User.admin) {
+      var userObj = {
+        name: req.param('name'),
+        familyname: req.param('familyname'),
+        title: req.param('title'),
+        email: req.param('email'),
+        birthday: req.param('birthday'),
+        phone: req.param('phone'),
+        address: req.param('address'),
+        postal: req.param('postal'),
+        city: req.param('city'),
+        country: req.param('country'),
+        profileUrl: req.param('profileUrl'),
+        admin: req.param('admin'),
+      }
+    } else {
+      var userObj = {
+        name: req.param('name'),
+        familyname: req.param('familyname'),
+        title: req.param('title'),
+        email: req.param('email'),
+        birthday: req.param('birthday'),
+        phone: req.param('phone'),
+        address: req.param('address'),
+        postal: req.param('postal'),
+        city: req.param('city'),
+        country: req.param('country'),
+        profileUrl: req.param('profileUrl'),          
+      }
+    }
+
+  	User.update(req.param('id'), userObj, function userUpdated(err) {
   		// if user is not find output an error
   		if(err) {
   			return res.redirect('/user/edit/' + req.param('id'));

@@ -6,6 +6,17 @@
 				<h2>Hey, you're editing a user....</h2>
 
 				<div class="input-form">
+					<% if(session.authenticated && session.User.admin) { %>
+						<% if(user.admin) { %>
+							<input type="hidden" name="admin" value="unchecked">
+							<label><input type="checkbox" name="admin" checked>Admin</label>
+						<% } else { %>
+							<input type="hidden" name="admin" value="unchecked">
+							<label><input type="checkbox" name="admin">Admin</label>
+						<% } %>
+					<% } %>
+				</div>
+				<div class="input-form">
 					<input type="text" class="form-control" placeholder="Your name" name="name" value="<%= user.name %>">
 				</div>
 				<div class="input-form">

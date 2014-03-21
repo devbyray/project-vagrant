@@ -8,6 +8,16 @@
 			<div class="profile-pic">
 				<img src="<%= user.profileUrl %>" alt="Profile pic of <%= user.name %> <%= user.familyname %>" />
 			</div>
+			<p class="show_user_rights_icon">
+				<strong>Rights: </strong>
+				<% if(user.admin) { %>
+					Admin
+				<% } else if(user.manager) { %>
+					Manager
+				<% } else { %>
+					Employee
+				<% } %>
+			</p>
 			<p><strong>E-mail:</strong> <%= user.email %></p>
 			<p><strong>Title:</strong> <%= user.title %></p>
 			<p><strong>Birthday:</strong> <%= user.birthday %></p>
