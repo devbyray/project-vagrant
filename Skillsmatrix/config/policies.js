@@ -21,6 +21,7 @@ module.exports.policies = {
   user: {
   	'new': "flash",
   	create: "flash",
+  	subscribe: "flash",
   	show: "employee",
   	edit: "employee",
   	update: "employee",

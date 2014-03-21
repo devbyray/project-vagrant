@@ -1,4 +1,7 @@
 /* Custom styles */
+// Global Mixins
+@import "mixins/_mixins";
+
 
 /* Variable */
 $white : #fff;
@@ -73,5 +76,11 @@ footer {
 	}
 	* {
 		color: $white;
+	}
+}
+
+#table_user_status {
+	span {
+		@include css3(transtion, 0.5s ease);
 	}
 }

@@ -85,7 +85,7 @@ module.exports = {
 	},
 
 	beforeValidation: function(values, next) {
-		console.log(values)
+		// Check if user is admin
 		if (typeof values.admin !== 'undefined') {
 			if(values.admin === 'unchecked') {
 				values.admin = false;

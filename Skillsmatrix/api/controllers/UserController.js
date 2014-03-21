@@ -57,6 +57,9 @@ module.exports = {
         user.save(function(err, user) {
           if(err) return next(err);
 
+          // Let other subscriberd sockets know that the user was created
+          User.publishCreate(user);
+
           // After succesfully creating the user
           // Redirect to the show action
           res.redirect('/user/show/'+user.id);
@@ -160,6 +163,9 @@ module.exports = {
 
   		User.destroy(req.param('id'), function userDestroyed(err){
   			if (err) return next(err);
+
+        // Let other subscriberd sockets know that the user was destroyed
+          User.publishDestroy(user.id);
   		});
 
   		res.redirect('/user');
@@ -170,6 +176,24 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to UserController)
    */
+
+   subscribe: function(req, res) {
+
+    User.find(function foundUsers(err, users) {
+      if(err) return next(err);
+
+      // Subscribe this socket to the User model classroom
+      User.subscribe(req.socket);
+
+      // Subscribe this socket to the user instance rooms
+      User.subscribe(req.socket, users);
+
+      // This will avoid a warning from the socket for trying to render
+      // html over the socket.
+      res.send(200);
+
+    });
+   },
 
   
 };

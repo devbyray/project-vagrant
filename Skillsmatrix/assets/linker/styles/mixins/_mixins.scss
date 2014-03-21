@@ -1,0 +1,239 @@
+// Mixins CSS
+
+// 
+// 
+// 
+// Mixins from http://css-tricks.com/redesigning-with-sass/
+// 
+// 
+// 
+@mixin clear() {
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin afterFix() {
+	&:after {
+		clear: both;
+		display: block;
+		font: 1px/0px serif;
+		content: ".";
+		height: 0;
+		visibility: hidden;
+	}
+}
+.afterFix {
+    &:after {
+        clear: both;
+        display: block;
+        font: 1px/0px serif;
+        content: ".";
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+@mixin NoText() {
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    font-size: 0;
+    text-align: start;
+}
+
+@mixin hoverActiveFocus($property, $value) {
+    &:hover, &:active, &:focus {
+        #{$property}: $value;
+    }
+}
+
+// 
+// 
+// 
+// Mixins from http://www.webcreatorbox.com/en/tutorials/sass-mixin-en/
+// 
+// 
+// 
+@mixin css3($property, $value) {
+     @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+          #{$prefix}#{$property}: $value;
+     }
+}
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@mixin animation ($delay, $duration, $animation, $fill) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: $fill; /* this prevents the animation from restarting! */
+ 
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-fill-mode: $fill; /* this prevents the animation from restarting! */
+ 
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $animation;
+    -o-animation-fill-mode: $fill; /* this prevents the animation from restarting! */
+ 
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: $fill; /* this prevents the animation from restarting! */
+}
+
+@mixin opacity($opacity) {
+     opacity: $opacity;
+     $opacityIE: $opacity * 100;
+     filter: alpha(opacity=$opacityIE);
+}
+
+@mixin AbsPos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+     position: absolute;
+     top: $top;
+     right: $right;
+     bottom: $bottom;
+     left: $left;
+}
+
+@mixin fontsize($size: 24, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+// 
+// 
+// 
+// Mixins from https://gist.github.com/tomraithel/3852171
+// 
+// 
+// 
+@mixin center($width, $height) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: $height;
+    width: $width;
+    margin-left: - $width / 2;
+    margin-top: - $height / 2;
+}
+@mixin centerHorz($width) {
+    position: absolute;
+    left: 50%;
+    width: $width;
+    margin-left: - $width / 2;
+}
+@mixin centerVert($height) {
+    position: absolute;
+    top: 50%;
+    height: $height;
+    margin-top: - $height / 2;
+}
+
+
+// 
+// 
+// 
+// Mixins from Web Media Helden
+// 
+// 
+// 
+@mixin TopLeft ($top: auto, $left: auto) {
+     position: absolute;
+     top: $top;
+     left: $left;
+}
+@mixin TopRight ($top: auto, $right: auto) {
+     position: absolute;
+     top: $top;
+     right: $right;
+}
+@mixin BottomLeft ($bottom: auto, $left: auto) {
+     position: absolute;
+     bottom: $bottom;
+     left: $left;
+}
+@mixin BottomRight ($bottom: auto, $right: auto) {
+     position: absolute;
+     bottom: $bottom;
+     right: $right;
+}
+
+@mixin column-span($count) {
+    -moz-column-span: $count;
+    -webkit-column-span: $count;
+    -o-column-span: $count;
+    -ms-column-span: $count;
+    -khtml-column-span: $count;
+    column-span: $count;
+}
+
+@mixin gradient-bg-2($begin_color, $end_color) {
+    background: $begin_color; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: -moz-linear-gradient(top,  $begin_color 0%, $end_color 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$begin_color), color-stop(100%,$end_color)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $begin_color 0%,$end_color 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $begin_color 0%,$end_color 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $begin_color 0%,$end_color 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $begin_color 0%,$end_color 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ); /* IE6-8 */
+}
+@mixin gradient-bg-2-inportant($begin_color, $end_color) {
+    background: $begin_color; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: -moz-linear-gradient(top,  $begin_color 0%, $end_color 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$begin_color), color-stop(100%,$end_color)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $begin_color 0%,$end_color 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $begin_color 0%,$end_color 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $begin_color 0%,$end_color 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  $begin_color 0%,$end_color 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ) !important; /* IE6-8 */
+}
+
+@mixin gradient-bg-3($begin_color, $middle_color, $end_color) {
+    background: $begin_color; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: -moz-linear-gradient(top,  $begin_color 0%, $middle_color 50%, $end_color 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$begin_color), color-stop(50%,$middle_color), color-stop(100%,$end_color)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ); /* IE6-8 */
+}
+
+
+// http://stackoverflow.com/questions/10929458/sass-converting-hex-to-rgba-for-background-opacity
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin fullAuto() {
+    width: 100%; height: auto;
+}
