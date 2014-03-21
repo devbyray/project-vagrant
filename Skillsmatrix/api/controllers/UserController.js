@@ -52,11 +52,15 @@ module.exports = {
         req.session.authenticated = true;
         req.session.User = user;
 
-  		// After succesfully creating the user
-  		// Redirect to the show action
-  		// res.json(user);
+        // Change status to online
+        user.online = true;
+        user.save(function(err, user) {
+          if(err) return next(err);
 
-  		res.redirect('/user/show/'+user.id);
+          // After succesfully creating the user
+          // Redirect to the show action
+          res.redirect('/user/show/'+user.id);
+        });
   	});
   },
 

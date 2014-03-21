@@ -64,6 +64,11 @@ module.exports = {
 			type: 'string',
 		},
 
+		online: {
+			type: 'boolean',
+			defaultsTo: false
+		},
+
 		admin: {
 			type: 'boolean',
 			defaultsTo: false

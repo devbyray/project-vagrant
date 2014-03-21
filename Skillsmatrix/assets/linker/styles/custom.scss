@@ -1,5 +1,11 @@
 /* Custom styles */
 
+/* Variable */
+$white : #fff;
+$black : #000;
+$red : red;
+$green : green;
+
 /* Icons from WeLoveIconsFonts.com */
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 
@@ -8,9 +14,13 @@
   font-family: 'entypo', sans-serif;
 }
 
-/* Variable */
-$white : #fff;
-$black : #000;
+[class*="entypo-"].red {
+	color: $red;
+}
+
+[class*="entypo-"].green {
+	color: $green;
+}
 
 body {
 	padding-top: 72px;

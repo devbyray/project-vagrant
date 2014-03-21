@@ -7,7 +7,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<!-- <th></th> -->
+						<th></th>
 						<th>ID</th>
 						<th>Name</th>
 						<th>Title</th>
@@ -27,6 +27,17 @@
 							</div>
 						</td>
  -->						
+ 						<td>
+ 							<% if(user.online) { %>
+	 							<div id="table_user_status" class="online">
+	 								<span class="entypo-star green"></span>
+								</div>
+							<% } else { %>
+	 							<div id="table_user_status">
+	 								<span class="entypo-star-empty red"></span>
+								</div>
+							<% } %>
+ 						</td>
  						<td><%= user.id %></td>
 						<td><a href="/user/show/<%= user.id %>"><%= user.name %></a></td>
 						<td><%= user.title %></td>
