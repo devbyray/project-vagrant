@@ -93,7 +93,9 @@ module.exports = {
 					// Inform other sockets ( connected sockets that are subscribed) that this user is now logged in
 					User.publishUpdate(user.id, {
 						loggedIn: true,
-						id: user.id
+						id: user.id,
+						name: user.name,
+						action: ' has logged in.'
 					});
 
 					// If the user is also an admin redirect to the user list (/view/user/index.ejs)
@@ -116,24 +118,35 @@ module.exports = {
 
 			var userId = req.session.User.id;
 
-			// The user is "logging out" (destroying the session) so change the online attribute to false.
-			User.update(userId, {
-				online: false
-			}, function (err) {
-				if(err) return next(err);
+			if (user) {
+				// The user is "logging out" (e.g. destroying the session) so change the online attribute to false.
+				User.update(userId, {
+					online: false
+				}, function(err) {
+					if (err) return next(err);
 
-				// Inform other sockets ( connected sockets that are subscribed) that this user is now logged in
-				User.publishUpdate(user.id, {
-					loggedIn: false,
-					id: user.id
+					// Inform other sockets (e.g. connected sockets that are subscribed) that the session for this user has ended.
+					User.publishUpdate(userId, {
+						loggedIn: false,
+						id: userId,
+						name: user.name,
+						action: ' has logged out.'
+					});
+
+					// Wipe out the session (log out)
+					req.session.destroy();
+
+					// Redirect the browser to the sign-in screen
+					res.redirect('/session/new');
 				});
+			} else {
 
 				// Wipe out the session (log out)
 				req.session.destroy();
 
 				// Redirect the browser to the sign-in screen
 				res.redirect('/session/new');
-			});
+			}
 		});
 	}
 };

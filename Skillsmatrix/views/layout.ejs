@@ -37,6 +37,14 @@
       <script type="text/javascript">
         window.Skillsmatrix = { csrf: "<%= _csrf %>"};
       </script>
+
+      <!-- The sound file that will play on activity events -->
+      <audio id="chatAudio">
+        <source src="/sounds/notify.ogg" type="audio/ogg">
+        <source src="/sounds/notify.mp3" type="audio/mp3">
+        <source src="/sounds/notify.wav" type="audio/wav">
+      </audio>
+
     </head>
 
     <body>
@@ -83,6 +91,9 @@
       </div>
 
       <div class="container">
+        <div class="notifications_wrapper">
+          <div id="before_notifications"></div>
+        </div>
         <%- body %>
       </div>
       

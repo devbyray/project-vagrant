@@ -75,7 +75,20 @@ function cometMessageReceivedFromServer(message) {
   if(message.model === 'user') {
     var userId = message.id
     updateUserInDom(userId, message);
+
+    if(message.verb !== "destroy") {
+      displayFlashActivity(message);
+    }
   }
+}
+
+function displayFlashActivity(message) {
+  $('#chatAudio')[0].play();
+  $("#before_notifications").after("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + message.data.name + message.data.action + "<div>");
+  $(".alert").fadeOut(5000);
+  // $( ".alert .close" ).click(function() {
+  //   $(".alert").hide(); 
+  // });
 }
 
 function updateUserInDom(userId, message) {
