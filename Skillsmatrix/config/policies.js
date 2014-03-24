@@ -23,7 +23,6 @@ module.exports.policies = {
   	create: "flash",
   	subscribe: ["flash", "authenticated"],
   	show: "employee",
-  	profile: "employee",
   	edit: "employee",
   	update: "employee",
   	'*': "admin"
