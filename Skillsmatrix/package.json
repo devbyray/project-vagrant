@@ -13,12 +13,28 @@
     "bcrypt-nodejs": "0.0.3",
     "crypto": "0.0.3"
   },
+  "engines": {
+    "node": "0.10.x"
+  },
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js"
   },
   "main": "app.js",
-  "repository": "",
-  "author": "",
-  "license": ""
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymonschouwenaar/project-vagrant.git"
+  },
+  "author": "Raymon Schouwenaar",
+  "license": "ISC",
+  "devDependencies": {},
+  "keywords": [
+    "Sails",
+    "JS",
+    "Usermage"
+  ],
+  "bugs": {
+    "url": "https://github.com/raymonschouwenaar/project-vagrant/issues"
+  },
+  "homepage": "https://github.com/raymonschouwenaar/project-vagrant"
 }
