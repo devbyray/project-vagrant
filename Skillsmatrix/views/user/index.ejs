@@ -7,26 +7,15 @@
 
 			<div ng-app="userApp">
 			    <div class="container" ng-controller="UserController" ng-cloak>
-<!-- 			        <p id="empty" ng-hide="users.length || !loaded">You don't have any users! Add one now:</p>
-			        <ul id="users" class="unstyled">
-			            <li ng-repeat="user in users">
-			                {{user.name}}
-			            </li>
-			        </ul>
- -->
 
-
-
-					<div class="form">
-						<form id="tfnewsearch" method="get" action="/user">
-							<label>Name
-								<input type="text" class="tftextinput" name="name" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-							</label>
-							<label>ID
-								<input type="text" class="tftextinput" name="id" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-							</label>			        
-						</form>
-					</div>
+				    <div class="search_users">
+				      <strong>Search user:</strong>
+				      <input type="search" data-ng-model="searchUser" class="form-control" />
+<!-- 				     <select ng-model="query.cloth">
+				        <option value="">All clothes</option>
+				        <option ng-repeat="cloth in clothes" value="{{cloth.name}}">{{cloth.name}}</option>
+				      </select>
+ -->				</div>
 					<table class="table">
 						<thead>
 							<tr>
@@ -42,21 +31,34 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-id="{{user.id}}" data-model="user" ng-repeat="user in users"> 
-		 						<td>
-		 							Online / offline not set
+							<tr data-id="{{user.id}}" data-model="user" ng-repeat="user in users | filter:searchUser"> 
+		 						<td ng-switch on="user">
+		 							<div id="table_user_status" class="online" ng-if="user.online == true">
+		 								<span class="entypo-star green"></span>
+									</div>
+		 							<div id="table_user_status" class="offline" ng-if="user.online != true">
+		 								<span class="entypo-star-empty red"></span>
+									</div>
 		 						</td>
 		 						<td>{{user.id}}</td>
 								<td><a href="/user/show/{{user.id}}">{{user.name}}</a></td>
 								<td>{{user.title}}</td>
 								<td>{{user.email}}</td>
-								<td class="user_rights_icon">
-									User Rights not set
+								<td>
+									<span ng-if="user.admin == true">
+										Admin
+									</span>
+									<span ng-if="user.manager == true">
+										Manager
+									</span>
+									<span ng-if="user.admin == false || user.manager == false">
+										Employee
+									</span>
 								</td>
 								<td><a href="/user/show/{{user.id}}" class="btn btn-sm btn-primary">Show</a></td>
 								<td><a href="/user/edit/{{user.id}}" class="btn btn-sm btn-warning">Edit</a></td>
 								<td>
-									<form action="/user/destroy/{{user.id}}" method="POST">
+									<form action="{{userActionUrl +'destroy/user.id'}}" method="POST">
 										<input type="hidden" name="_method" value="delete">
 										<input type="submit" class="btn btn-sm btn-danger" value="Delete">
 										<input type="hidden" name="_csrf" value="<%= _csrf %>">
