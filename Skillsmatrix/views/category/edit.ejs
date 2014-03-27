@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="category_page">
 
 	<div class="col-md-8">
 		<article>
@@ -13,7 +13,7 @@
 					</ul>
 				<% } %>
 				<div class="input-form">
-					<input type="text" class="form-control" placeholder="Category title" name="title" value="%= category.title %>">
+					<input type="text" class="form-control" placeholder="Category title" name="title" value="<%= category.title %>">
 				</div>
 				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Save changes">
 				<input type="hidden" name="_csrf" value="<%= _csrf %>">

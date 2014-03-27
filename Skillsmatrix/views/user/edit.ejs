@@ -15,7 +15,25 @@
 							<label><input type="checkbox" name="admin">Admin</label>
 						<% } %>
 					<% } %>
-				</div>
+<!-- 					<% if(session.authenticated && session.User.admin) { %>
+						<% if(user.manager) { %>
+							<input type="hidden" name="manager" value="unchecked">
+							<label><input type="checkbox" name="manager" checked>Manager</label>
+						<% } else { %>
+							<input type="hidden" name="manager" value="unchecked">
+							<label><input type="checkbox" name="manager">Manager</label>
+						<% } %>
+					<% } %>
+					<% if(session.authenticated && session.User.admin) { %>
+						<% if(user.employee) { %>
+							<input type="hidden" name="employee" value="unchecked">
+							<label><input type="checkbox" name="employee" checked>Employee</label>
+						<% } else { %>
+							<input type="hidden" name="employee" value="unchecked">
+							<label><input type="checkbox" name="employee">Employee</label>
+						<% } %>
+					<% } %>
+ -->				</div>
 				<div class="input-form">
 					<input type="text" class="form-control" placeholder="Your name" name="name" value="<%= user.name %>">
 				</div>

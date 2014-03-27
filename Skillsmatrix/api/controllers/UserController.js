@@ -65,7 +65,9 @@ module.exports = {
 
           // After succesfully creating the user
           // Redirect to the show action
-          res.redirect('/user/show/'+user.id);
+          if(!req.session.User.admin || !req.session.User.manager) {
+            res.redirect('/user/show/'+user.id);
+          }
         });
   	});
   },
@@ -129,8 +131,10 @@ module.exports = {
         country: req.param('country'),
         profileUrl: req.param('profileUrl'),
         admin: req.param('admin'),
+        manager: req.param('manager'),
+        employee: req.param('employee'),
       }
-    } else {
+    }  else {
       var userObj = {
         name: req.param('name'),
         familyname: req.param('familyname'),
@@ -149,6 +153,7 @@ module.exports = {
   	User.update(req.param('id'), userObj, function userUpdated(err) {
   		// if user is not find output an error
   		if(err) {
+        console.log(err);
   			return res.redirect('/user/edit/' + req.param('id'));
   		}
 
@@ -183,6 +188,25 @@ module.exports = {
 
   		res.redirect('/user');
   	});
+  },
+
+  /**
+   * Action blueprints:
+   *    `/user/delete/user.id`
+   */
+  delete: function(req, res, next) {
+    User.findOne(req.param('id'), function foundUser(err, user) {
+      // if user is not find output an error
+      if (err) return next(err);
+
+      // if the user is find
+      if(!user) return next('User doen\'t exist.');
+
+      // Show user
+      res.view({
+        user:user
+      });
+    });
   },
 
   /**

@@ -1,16 +1,18 @@
-<div class="row">
+<div class="row" id="category_page">
 
 	<div class="col-md-12">
 		<article>
 			<h1>Categories</h1>
-
-
 			<div ng-app="userApp">
 			    <div class="container" ng-controller="CategoryController" ng-cloak>
 
 				    <div class="search_users">
 				      <strong>Search category:</strong>
 				      <input type="search" data-ng-model="searchCategory" class="form-control" />
+				      <div class="form_buttons">
+					      <a href="/category/new/" class="btn btn-sm btn-primary">Create new category</a>
+					  </div>
+					  <hr>
 					</div>
 					<table class="table">
 						<thead>
@@ -24,14 +26,10 @@
 						<tbody>
 							<tr data-id="{{category.id}}" data-model="category" ng-repeat="category in categories | filter:searchCategory"> 
 								<td><a href="/category/show/{{category.id}}">{{category.title}}</a></td>
-								<td><a href="/category/show/{{category.id}}" class="btn btn-sm btn-primary">Show</a></td>
-								<td><a href="/category/edit/{{category.id}}" class="btn btn-sm btn-warning">Edit</a></td>
 								<td>
-									<form action="category/destroy/{{category.id}}" method="POST">
-										<input type="hidden" name="_method" value="delete">
-										<input type="submit" class="btn btn-sm btn-danger" value="Delete">
-										<input type="hidden" name="_csrf" value="<%= _csrf %>">
-									</form>
+									<a href="/category/show/{{category.id}}" class="btn btn-sm btn-primary">Show</a>
+									<a href="/category/edit/{{category.id}}" class="btn btn-sm btn-warning">Edit</a>
+									<a href="/category/delete/{{category.id}}" class="btn btn-sm btn-danger">Delete</a>
 								</td>
 							</tr>
 						</tbody>

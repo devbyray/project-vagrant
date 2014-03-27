@@ -73,6 +73,16 @@ module.exports = {
 			type: 'boolean',
 			defaultsTo: false
 		},
+
+		manager: {
+			type: 'boolean',
+			defaultsTo: false
+		},
+
+		emplyee: {
+			type: 'boolean',
+			defaultsTo: false
+		},
 		
 		toJSON: function() {
 			var obj = this.toObject();

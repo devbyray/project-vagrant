@@ -26,6 +26,16 @@ module.exports.policies = {
   	edit: "employee",
   	update: "employee",
   	'*': "admin"
+  },
+
+  category: {
+  	'new': "flash",
+  	create: "flash",
+  	show: "flash",
+  	edit: "flash",
+  	update: "flash",
+  	delete: "admin",
+  	'*': "admin"
   }
 
   /*

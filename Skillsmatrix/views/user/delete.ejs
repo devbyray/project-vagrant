@@ -1,0 +1,22 @@
+<div class="row" id="user_page">
+
+	<div class="col-md-8">
+		<article>
+			<form action="/user/destroy/<%= user.id %>" method="POST" class="form-signin" id="edit-user-form">
+				<h2 class="form-sigin-heading">Delete user</h2>
+				<p>So you wanne delete the <strong><%= user.name %></strong> user?</p>
+				<p>Check the checkbox to delete</p>
+				<label>Confirm to delete '<%= user.name %>' user<input type="checkbox" name="confirmDelete" value="confirmDelete" ng-model='confirmDelete'></label>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Delete user" ng-disabled="deleteButtonDisabled">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+
+	<div class="col-md-4">
+		<aside>
+			<h2>Delete user</h2>
+		</aside>
+	</div>
+
+</div>

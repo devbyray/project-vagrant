@@ -133,6 +133,25 @@ module.exports = {
 
   /**
    * Action blueprints:
+   *    `/category/delete/category.id`
+   */
+  delete: function(req, res, next) {
+    Category.findOne(req.param('id'), function foundCategory(err, category) {
+      // if category is not find output an error
+      if (err) return next(err);
+
+      // if the category is find
+      if(!category) return next('Category doen\'t exist.');
+
+      // Show category
+      res.view({
+        category:category
+      });
+    });
+  },
+
+  /**
+   * Action blueprints:
    *    `/category/update`
    */
   update: function(req, res, next) {
@@ -150,9 +169,9 @@ module.exports = {
 
   /**
    * Action blueprints:
-   *    `/category/delete`
+   *    `/category/destroy`
    */
-  delete: function(req, res, next) {
+  destroy: function(req, res, next) {
     Category.findOne(req.param('id'), function foundCategory(err, category) {
       // if category is not find output an error
       if (err) return next(err);
@@ -162,12 +181,11 @@ module.exports = {
 
       var saved_category_title = category.title;
 
-      Category.delete(req.param('id'), function categoryDeleted(err){
+      Category.destroy(req.param('id'), function categoryDeleted(err){
         if (err) return next(err);
 
         // Inform other sockets (e.g. connected sockets that are subscribed) that this category is now logged in
         Category.publishUpdate(category.id, {
-          loggedIn: false,
           id: category.id,
           title: category.title,
           action: ' has deleted.'

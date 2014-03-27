@@ -1,11 +1,15 @@
-<div class="row">
+<div class="row" id="category_page">
 
 	<div class="col-md-8">
 		<article id="profile-page">
 			<h1>Category</h1>
 			<hr />
-			<h2><%= category.title %></h2>
-			<a href="/user/edit/<%= category.id %>" class="btn btn-medium btn-primary">Edit</a>
+			<div class="form_buttons">
+				<a href="/category/edit/<%= category.id %>" class="btn btn-sm btn-default">Edit</a> <a href="/category/new/" class="btn btn-sm btn-success">Create new category</a>
+			</div>
+			<p>
+				<strong>Category title: </strong><%= category.title %>
+			</p>
 		</article>
 	</div>	
 
