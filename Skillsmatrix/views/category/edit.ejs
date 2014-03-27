@@ -1,0 +1,30 @@
+<div class="row">
+
+	<div class="col-md-8">
+		<article>
+			<form action="/category/update/<%= category.id %>" method="POST" class="form-signin" id="edit-category-form">
+				<h2 class="form-sigin-heading">Edit an category</h2>
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-danger">
+				<% Object.keys(flash.err).forEach(function(error) { %>
+					    <li><%- JSON.stringify(flash.err[error]) %></li>
+				<% }) %>
+					</ul>
+				<% } %>
+				<div class="input-form">
+					<input type="text" class="form-control" placeholder="Category title" name="title" value="%= category.title %>">
+				</div>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Save changes">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+
+	<div class="col-md-4">
+		<aside>
+			<h2>Edit category</h2>
+		</aside>
+	</div>
+
+</div>
