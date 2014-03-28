@@ -200,7 +200,7 @@
     background: -o-linear-gradient(top,  $begin_color 0%,$end_color 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  $begin_color 0%,$end_color 100%); /* IE10+ */
     background: linear-gradient(to bottom,  $begin_color 0%,$end_color 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ); /* IE6-8 */
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= $begin_color , endColorstr= $end_color ,GradientType=0 ); /* IE6-8 */
 }
 @mixin gradient-bg-2-inportant($begin_color, $end_color) {
     background: $begin_color; /* Old browsers */
@@ -211,7 +211,7 @@
     background: -o-linear-gradient(top,  $begin_color 0%,$end_color 100%) !important; /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  $begin_color 0%,$end_color 100%) !important; /* IE10+ */
     background: linear-gradient(to bottom,  $begin_color 0%,$end_color 100%) !important; /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ) !important; /* IE6-8 */
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$begin_color, endColorstr=$end_color,GradientType=0 ) !important; /* IE6-8 */
 }
 
 @mixin gradient-bg-3($begin_color, $middle_color, $end_color) {
@@ -223,7 +223,7 @@
     background: -o-linear-gradient(top,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* IE10+ */
     background: linear-gradient(to bottom,  $begin_color 0%,$middle_color 50%,$end_color 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$begin_color', endColorstr='$end_color',GradientType=0 ); /* IE6-8 */
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$begin_color, endColorstr=$end_color,GradientType=0 ); /* IE6-8 */
 }
 
 

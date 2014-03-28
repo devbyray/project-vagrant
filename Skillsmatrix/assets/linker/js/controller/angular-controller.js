@@ -1,5 +1,26 @@
 var userApp = angular.module('userApp', []);
 
+userApp.controller('MainController', function($scope, $http) {
+
+    $scope.getClass = function(path) {
+        if ($location.path().substr(0, path.length) == path) {
+          console.log('active');
+          return "active"
+        } else {
+          console.log('what are you talking about?');
+          return ""
+        }
+    }
+
+});
+
+userApp.controller('NavigationCtrl', ['$scope', '$location', function ($scope, $location) {
+    $scope.isCurrentPath = function (viewLocation) {
+         var active = (viewLocation === $location.path());
+         return active;
+    };
+}]);
+
 userApp.controller('UserController', function($scope, $http) {
 
     $scope.users = [];

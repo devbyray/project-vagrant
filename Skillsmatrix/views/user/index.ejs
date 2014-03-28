@@ -1,4 +1,4 @@
-<div class="row">
+<div class="wrapper" id="user_index_page">
 
 	<div class="col-md-12">
 		<article>
@@ -6,7 +6,7 @@
 
 
 			<div ng-app="userApp">
-			    <div class="container" ng-controller="UserController" ng-cloak>
+			    <div ng-controller="UserController" ng-cloak>
 
 				    <div class="search_users">
 				      <strong>Search user:</strong>
@@ -21,7 +21,6 @@
 								<th></th>
 								<th>Name</th>
 								<th>Title</th>
-								<th>Email</th>
 								<th>Rights</th>
 								<th></th>
 							</tr>
@@ -38,7 +37,6 @@
 		 						</td>
 								<td><a href="/user/show/{{user.id}}">{{user.name}}</a></td>
 								<td>{{user.title}}</td>
-								<td>{{user.email}}</td>
 								<td>
 									<span ng-if="user.admin == true">
 										Admin
@@ -51,9 +49,9 @@
 									</span>
 								</td>
 								<td>
-									<a href="/user/show/{{user.id}}" class="btn btn-sm btn-primary">Show</a>
-									<a href="/user/edit/{{user.id}}" class="btn btn-sm btn-warning">Edit</a>
-									<a href="/user/delete/{{user.id}}" class="btn btn-sm btn-danger">Delete</a>
+									<a href="/user/show/{{user.id}}" class="btn btn-medium btn-primary">Show</a>
+									<a href="/user/edit/{{user.id}}" class="btn btn-medium btn-warning">Edit</a>
+									<a href="/user/delete/{{user.id}}" class="btn btn-medium btn-danger">Delete</a>
 								</td>
 							</tr>
 						</tbody>

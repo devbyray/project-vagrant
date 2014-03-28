@@ -6,8 +6,24 @@
 /* Variable */
 $white : #fff;
 $black : #000;
+$black_lighter : #222222;
+$blue_dark_grey : #2b2f3e;
+$blue_lighter_grey: #384268;
+$grey : #ccc;
 $red : red;
 $green : green;
+* {
+	@include css3(border-radius, 0);
+}
+
+/* Import Open Sans font from Google Fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300);
+
+/* Reset standard font family */
+html, body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+}
 
 /* Icons from WeLoveIconsFonts.com */
 @import url(http://weloveiconfonts.com/api/?family=entypo);
@@ -25,19 +41,186 @@ $green : green;
 	color: $green;
 }
 
+/* Main style */
 body {
-	padding: 72px 0;
+	background-color: lighten($grey, 10%);
+}
+#container {
+	width: 100%; min-height: 100%;
+	height: auto !important; 
+	height: 100%; 
+	position: absolute;
+	left: 0; top: 0;
+	overflow: hidden;
+}
+.wrapper_main {
+	padding-left: 250px;
+}
+.wrapper_page {
+	padding: 20px;
+}
+hr {
+	border-color: $blue_dark_grey; 
 }
 
+/* Main text style */
+body {
+	padding-bottom: 70px;
+	a {
+		color: $black;
+	}
+}
+
+/* Bootstrap specific custom style */
 .jumbotron {
 	text-align: center;
+	background-color: none;
+}
+.table>thead>tr>th, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>td, 
+.table>tfoot>tr>td {
+	padding: 12px 8px;
 }
 
+/* Boodstrap buttons */
+.btn {
+	border-radius: 0;
+	@include css3(transition, ease .15s);
+	&.btn-primary {
+		background-color: $blue_lighter_grey;
+		border: lighten($blue_lighter_grey, 5%);
+		&:hover {		
+			background-color: lighten($blue_lighter_grey, 8%);
+			border: lighten($blue_lighter_grey, 12%);
+		}
+	}
+}
+
+/* Navigation style */
+// Sidebar
+div.navbar{
+	margin: 0 0 0 0;
+	border: 0; /* Reset standard border for navbar */
+	@include css3(border-radius, 0);
+	.navbar-brand {
+		color: lighten($grey, 5%);
+	}
+	&.side_nav {
+		position: absolute;
+		top: 0;
+		width: 250px;
+		background-color: $blue_dark_grey;
+		height: 100%;
+		&.side_fixed_left {
+			left: 0;
+			@include css3(box-shadow, inset -7px -15px 16px rgba(0,0,0,0.3));
+		}
+	}
+	&.nav_footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: lighten($blue_dark_grey, 5%);
+	}
+	.navbar-nav {
+		li {
+			width: 100%;
+			border-bottom: 1px solid lighten($blue_dark_grey, 8%);
+			&:first-child {
+				border-top: 1px solid lighten($blue_dark_grey, 8%);
+			}
+			a {
+				color: lighten($grey, 5%);
+			}
+			&:hover, &:focus, &.active {
+				a {
+					color: $white;
+					@include gradient-bg-2(#ff404b, #ff2c5e);
+				}
+			}
+		}
+	}
+	h1, h2, h3, h4, h5, h6, span, p, strong {
+		color: lighten($grey, 5%);
+	}
+}
+
+// Active Navigation
+.active_nav_item {
+	color: $white;
+	@include gradient-bg-2(#ff404b, #ff2c5e);
+}
+#brand_name {
+	&.navbar-header {
+		@extend .active_nav_item;
+		width: 100%; height: auto;
+		float: left;
+		margin-bottom: 10px;
+		.navbar-brand {
+			color: $white;
+			font-weight: 300;
+			font-size: 35px;
+			padding: 25px 15px;
+			height: auto;
+		}
+	}
+}
+
+/* Sidebar */
+.navbar {
+	.profile_wrapper {
+		width: 100%; height: auto;
+		float: left;
+		padding: 20px 85px;		
+		.profile_pic {
+			width: 100%; height: auto;
+			float: left;
+			img {
+				max-width: 100%;
+				height: auto;
+				@include css3(border-radius, 50%);
+			}
+		}		
+	}
+	.profile_name {
+		padding: 0 15px;
+		h2 {
+			font-weight: 300;
+		}
+	}
+}
+
+/* Notifications */
+.notifications_wrapper {
+	padding: 20px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	left: 0;
+	.alert {
+		border-radius: 0;
+		&.alert-success {
+			background-color: $blue_dark_grey;
+			border-color: darken($blue_dark_grey, 10%);
+			color: lighten($grey, 5%);
+			background-image: none;
+			button {
+				color: lighten($grey, 5%);
+				opacity: 1;
+			}
+		}
+	}
+}
+
+/* Forms style */
 .input-group,
 .form-control {
 	margin-bottom: 16px;
 }
-
 .input-form {
 	label {
 		width: 100%;
@@ -46,19 +229,27 @@ body {
 		float: left;
 	}
 }
+.form_buttons {
+	margin-bottom: 16px;
+}
 
+/* Profile page style */
 #profile-page {
-	.profile-pic {
+	.profile_pic {
 		position: relative;
 		float: right;
 		margin: 0 0 10px 10px;
 	}
 }
+
+/* Signin page style */
 #signin_page {
 	.center-block {
 		max-width: 33.33%;
 	}
 }
+
+/* Table style */
 .table {
 	.profile-pic {
 		width: 25px; height: 25px;
@@ -71,13 +262,29 @@ body {
 	form {
 		display: inline-block;
 	}
-}
-
-#category_page {
-	.form_buttons {
-		margin-bottom: 16px;
+	thead {
+		tr {
+			th {
+				border-color: lighten($blue_dark_grey, 50%);
+			}
+		}
+	}
+	tbody {
+		tr {
+			td {
+				border-color: lighten($blue_dark_grey, 50%);
+			}
+		}
 	}
 }
+#table_user_status {
+	span {
+		@include css3(transtion, 0.5s ease);
+	}
+}
+
+
+/* Footer style */
 
 footer {
 	div {
@@ -88,8 +295,3 @@ footer {
 	}
 }
 
-#table_user_status {
-	span {
-		@include css3(transtion, 0.5s ease);
-	}
-}
