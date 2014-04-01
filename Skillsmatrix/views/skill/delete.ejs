@@ -1,0 +1,15 @@
+<div class="wrapper" id="skill_page">
+
+	<div class="col-md-12">
+		<article>
+			<form action="/skill/destroy/<%= skill.id %>" method="POST" class="form-signin" id="edit-skill-form">
+				<h2 class="form-sigin-heading">Delete skill</h2>
+				<p>So you wanne delete the <strong><%= skill.title %></strong> skill?</p>
+				<p>Check the checkbox to delete</p>
+				<label>Confirm to delete '<%= skill.title %>' skill<input type="checkbox" name="confirmDelete" value="confirmDelete" ng-model='confirmDelete'></label>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Delete skill" ng-disabled="deleteButtonDisabled">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+</div>

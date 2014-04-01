@@ -156,6 +156,11 @@ module.exports = {
    */
   update: function(req, res, next) {
 
+    var categoryObj = {
+      title: req.param('title')
+    }
+
+
     Category.update(req.param('id'), categoryObj, function categoryUpdated(err) {
       // if category is not find output an error
       if(err) {

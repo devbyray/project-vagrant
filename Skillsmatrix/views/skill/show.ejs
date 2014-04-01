@@ -1,0 +1,23 @@
+<div class="wrapper" id="skill_page">
+
+	<div class="col-md-12">
+		<article id="profile-page">
+			<h1>Skill</h1>
+			<hr />
+			<p>
+				<strong>Skill title: </strong><%= skill.title %>
+			</p>
+			<p>
+				<strong>Category: </strong><%= skill.skill_cat %>
+			</p>
+			<p>
+				<strong>Rating: </strong><%= skill.rating_type %>
+			</p>
+			<div class="form_buttons">
+				<a href="/skill/" class="btn btn-medium btn-primary" title="Skill overview"><span class="entypo-list"></span></a>
+				<a href="/skill/new/" class="btn btn-medium btn-danger" title="New skill"><span class="entypo-plus"></span></a>
+				<a href="/skill/edit/<%= skill.id %>" class="btn btn-medium btn-warning" title="Edit skill"><span class="entypo-pencil"></span></a>
+			</div>
+		</article>
+	</div>	
+</div>

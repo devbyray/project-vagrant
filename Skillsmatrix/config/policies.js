@@ -36,6 +36,16 @@ module.exports.policies = {
   	update: "flash",
   	delete: "admin",
   	'*': "admin"
+  },
+  
+  skill: {
+  	'new': "flash",
+  	create: "flash",
+  	show: "flash",
+  	edit: "flash",
+  	update: "flash",
+  	delete: "admin",
+  	'*': "admin"
   }
 
   /*

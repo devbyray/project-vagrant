@@ -19,14 +19,12 @@
 							<tr>
 								<th>Title</th>
 								<th></th>
-								<th></th>
-								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr data-id="{{category.id}}" data-model="category" ng-repeat="category in categories | filter:searchCategory"> 
-								<td><a href="/category/show/{{category.id}}">{{category.title}}</a></td>
-								<td>
+								<td class="cat_name"><a href="/category/show/{{category.id}}">{{category.title}}</a></td>
+								<td class="cat_btn">
 									<a href="/category/show/{{category.id}}" class="btn btn-sm btn-primary">Show</a>
 									<a href="/category/edit/{{category.id}}" class="btn btn-sm btn-warning">Edit</a>
 									<a href="/category/delete/{{category.id}}" class="btn btn-sm btn-danger">Delete</a>

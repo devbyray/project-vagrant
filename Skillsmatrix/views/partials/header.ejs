@@ -17,8 +17,9 @@
               <li class="user_show_page"><a href="/user/show/<%= session.User.id %>">Profile</a> </li>
             <% } %>
             <% if (session.authenticated && session.User.admin) { %>
-              <li class="user_index_page"><a href="/user" >User Administration</a></li>
-              <li class="cat_index_page"><a href="/category">Category overview</a></li>
+              <li class="user_index_page"><a href="/user" >Users</a></li>
+              <li class="cat_index_page"><a href="/category">Categories</a></li>
+              <li class="skill_index_page"><a href="/skill">Skills</a></li>
             <% } %>
           </ul>
           <div class="navbar-form">

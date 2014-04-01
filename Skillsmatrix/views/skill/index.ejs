@@ -1,0 +1,47 @@
+<div class="wrapper" id="skill_page">
+
+	<div class="col-md-12">
+		<article>
+			<h1>Skills</h1>
+			<div ng-app="userApp">
+			    <div ng-controller="SkillController" ng-cloak>
+
+				    <div class="search_users" ng-show="skills.length">
+				      <strong>Search skill:</strong>
+				      <input type="search" data-ng-model="searchSkill" class="form-control" />
+				      <div class="form_buttons">
+					      <a href="/skill/new/" class="btn btn-sm btn-primary">Create new skill</a>
+					  </div>
+					  <hr>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Category</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-id="{{skill.id}}" data-model="skill" ng-repeat="skill in skills | filter:searchSkill"> 
+								<td class="skill_name"><a href="/skill/show/{{skill.id}}">{{skill.title}}</a></td>
+								<td class="skill_cat"><a href="/category/show/{{skill_cat.id}}">{{skill.title}}</a></td>
+								<td class="cat_btn">
+									<a href="/skill/show/{{skill.id}}" class="btn btn-sm btn-primary">Show</a>
+									<a href="/skill/edit/{{skill.id}}" class="btn btn-sm btn-warning">Edit</a>
+									<a href="/skill/delete/{{skill.id}}" class="btn btn-sm btn-danger">Delete</a>
+								</td>
+							</tr>
+							<tr ng-hide="skills.length"> 
+								<td colspan="3">
+									<a href="/skill/new/" class="btn btn-sm btn-primary">Create the first skill ever!</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+			    </div>
+			</div>
+		</article>
+	</div>	
+</div>
+

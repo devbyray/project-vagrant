@@ -63,4 +63,19 @@ userApp.controller('CategoryController', function($scope, $http) {
 
 });
 
+userApp.controller('SkillController', function($scope, $http) {
+
+    $scope.skills = [];
+
+    // Get all skills
+    $http.get('/skill/find').success(function(skills) {
+            $scope.loaded = true;
+            $scope.skills = skills;
+    }).error(function(err) {
+        // Alert if there's an error
+        console.log(err);
+    });
+
+});
+
 

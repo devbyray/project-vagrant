@@ -1,0 +1,39 @@
+<div class="wrapper" id="skill_page">
+
+	<div class="col-md-12">
+		<article>
+			<form action="/skill/update/<%= skill.id %>" method="POST" class="form-signin" id="edit-skill-form">
+				<h2 class="form-sigin-heading">Edit an skill</h2>
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-danger">
+				<% Object.keys(flash.err).forEach(function(error) { %>
+					    <li><%- JSON.stringify(flash.err[error]) %></li>
+				<% }) %>
+					</ul>
+				<% } %>				
+				<div class="input-form">
+					<input type="text" class="form-control" placeholder="Skill title" name="title" value="<%= skill.title %>">
+				</div>
+				<div class="input-form">
+					<label for="skill_cat">Skill category</label>
+					<select name="skill_cat" id="skill_cat">
+						<% _.each(categories, function(category) { %>
+							<option value="<%= category.id %>"><%= category.title %></option>
+						<% }) %>
+					</select>
+				</div>
+				<div class="input-form">
+					<label for="rating_type">Rating on or of</label>
+					<select name="rating_type" id="rating_type">
+						<option>Choose rating type</option>
+						<option value="false">No-rating</option>
+						<option value="true">Rating</option>
+					</select>
+				</div>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Save changes">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+</div>

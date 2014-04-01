@@ -31,6 +31,9 @@ html, body {
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
+  .btn & {
+  	font-size: 1.5em;
+  }
 }
 
 [class*="entypo-"].red {
@@ -58,6 +61,9 @@ body {
 }
 .wrapper_page {
 	padding: 20px;
+	position: relative;
+	float: left;
+	width: 100%;
 }
 hr {
 	border-color: $blue_dark_grey; 
@@ -88,13 +94,13 @@ body {
 /* Boodstrap buttons */
 .btn {
 	border-radius: 0;
-	@include css3(transition, ease .15s);
+	@include css3(transition, ease 0.5s);
 	&.btn-primary {
 		background-color: $blue_lighter_grey;
-		border: lighten($blue_lighter_grey, 5%);
+		border-color: lighten($blue_lighter_grey, 5%);
 		&:hover {		
 			background-color: lighten($blue_lighter_grey, 8%);
-			border: lighten($blue_lighter_grey, 12%);
+			border-color: lighten($blue_lighter_grey, 12%);
 		}
 	}
 }
@@ -200,7 +206,6 @@ div.navbar{
 	position: fixed;
 	top: 0;
 	width: 100%;
-	left: 0;
 	.alert {
 		border-radius: 0;
 		&.alert-success {
@@ -273,6 +278,13 @@ div.navbar{
 		tr {
 			td {
 				border-color: lighten($blue_dark_grey, 50%);
+				&.cat_name {
+					width: 75%;
+				}
+				&.cat_btn {
+					width: 25%;
+					text-align: right;
+				}
 			}
 		}
 	}

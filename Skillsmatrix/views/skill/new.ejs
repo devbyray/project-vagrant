@@ -1,0 +1,38 @@
+<div class="wrapper" id="skill_page">
+
+	<div class="col-md-12">
+		<article>
+			<form action="/skill/create" method="POST" class="form-signin" id="new-skill-form">
+				<h2 class="form-sigin-heading">Create an skill</h2>
+
+				<% if(flash && flash.err) { %>
+					<ul class="alert alert-danger">
+				<% Object.keys(flash.err).forEach(function(error) { %>
+					    <li><%- JSON.stringify(flash.err[error]) %></li>
+				<% }) %>
+					</ul>
+				<% } %>
+				<div class="input-form">
+					<input type="text" class="form-control" placeholder="Skill title" name="title">
+				</div>
+				<div class="input-form">
+					<% categories.forEach(function(category) { %>
+					<label for="<%= category.id %>">
+						<input type="radio" name="skillCat" id="<%= category.id %>" value="<%= category.id %>">
+						<%= category.title %>
+					</label>
+					<% }) %>
+				</div>
+				<div class="input-form">
+					<label for="ratingType">Rating on or of</label>
+					<select name="ratingType" id="ratingType">
+						<option>No-rating</option>
+						<option value="true">Rating</option>
+					</select>
+				</div>
+				<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create skill">
+				<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			</form>
+		</article>
+	</div>	
+</div>

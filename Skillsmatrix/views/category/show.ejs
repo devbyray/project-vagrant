@@ -4,12 +4,14 @@
 		<article id="profile-page">
 			<h1>Category</h1>
 			<hr />
-			<div class="form_buttons">
-				<a href="/category/edit/<%= category.id %>" class="btn btn-sm btn-default">Edit</a> <a href="/category/new/" class="btn btn-sm btn-success">Create new category</a>
-			</div>
 			<p>
 				<strong>Category title: </strong><%= category.title %>
 			</p>
+			<div class="form_buttons">
+				<a href="/category/" class="btn btn-medium btn-primary" title="Category overview"><span class="entypo-list"></span></a>
+				<a href="/category/new/" class="btn btn-medium btn-danger" title="New category"><span class="entypo-plus"></span></a>
+				<a href="/category/edit/<%= category.id %>" class="btn btn-medium btn-warning" title="Edit category"><span class="entypo-pencil"></span></a>
+			</div>
 		</article>
 	</div>	
 </div>
